@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="../FlexNamer.shared.props" />
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\FlexNamer.Core\FlexNamer.Core.csproj" />
+    </ItemGroup>
+
+    <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+        <OutDir>..\FlexNamer\bin\Debug\net8.0\Plugins\FlexNamer.Personal\</OutDir>
+        <DebugType>Embedded</DebugType>
+    </PropertyGroup>
+
+</Project>

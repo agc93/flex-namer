@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexNamer", "FlexNamer\FlexNamer.csproj", "{5E4211F6-5B64-4875-AA62-4B9D79FCED36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexNamer.Personal", "FlexNamer.Personal\FlexNamer.Personal.csproj", "{8ADA8CAB-1CD8-4B5A-A5BA-0FE3B301E7BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexNamer.Core", "FlexNamer.Core\FlexNamer.Core.csproj", "{47FAED46-A399-4641-BC1B-148307A259C4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E4211F6-5B64-4875-AA62-4B9D79FCED36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E4211F6-5B64-4875-AA62-4B9D79FCED36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E4211F6-5B64-4875-AA62-4B9D79FCED36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E4211F6-5B64-4875-AA62-4B9D79FCED36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8ADA8CAB-1CD8-4B5A-A5BA-0FE3B301E7BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ADA8CAB-1CD8-4B5A-A5BA-0FE3B301E7BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8ADA8CAB-1CD8-4B5A-A5BA-0FE3B301E7BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8ADA8CAB-1CD8-4B5A-A5BA-0FE3B301E7BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47FAED46-A399-4641-BC1B-148307A259C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47FAED46-A399-4641-BC1B-148307A259C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47FAED46-A399-4641-BC1B-148307A259C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47FAED46-A399-4641-BC1B-148307A259C4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
