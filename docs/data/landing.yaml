@@ -1,0 +1,128 @@
+﻿# Note: Template blocks require a 'weight' parameter so they're correctly ordered on the landing page
+
+# Hero
+hero:
+  enable: true
+  weight: 10
+  template: hero
+
+  # backgroundImage:
+  #   path: "images/templates/hero"
+  #   filename:
+  #     desktop: "gradient-desktop.webp"
+  #     mobile: "gradient-mobile.webp"
+
+  badge:
+    text: Preview
+    color: primary # primary, secondary, success, danger, warning, info, light, dark
+    pill: false # boolean
+    soft: true # boolean
+
+  # titleLogo:
+  #   path: "images/logos"
+  #   filename: "title_logo.png"
+  #   alt: "Lotus Docs Logo"
+  #   height: 80px
+
+  title: "FlexNamer"
+  subtitle: An extensible tool for automatically renaming files
+
+  # image:
+  #   path: "images" # path to image under configured assets directory. default 'images'
+  #   filename: "lotus_docs_screenshot.png" # filename of your hero image (including file extension)
+  #   alt: "Lotus Docs Screenshot" # Optional but recommended
+  #   boxShadow: true # default 'false' (excludes .svg images)
+  #   rounded: true # round the image corners? default 'false' (excludes .svg images)
+
+  cta2Button:
+    icon: menu_book
+    btnText: "Get Started"
+    url: "/docs/introduction/"
+  # cta2Button:
+  #   icon: rocket_launch
+  #   btnText: "Download"
+  #   url: "https://github.com/agc93/flex-namer/releases"
+
+  info: "**Open Source** MIT Licensed."
+
+# Feature Grid
+featureGrid:
+  enable: true
+  weight: 20
+  template: feature grid
+
+  title: What is FlexNamer?
+  subtitle: FlexNamer is a small extensible utility designed for automating repetitive file renaming tasks, based on a simple plugin architecture.
+
+  items:
+    - title: Fast and Simple
+      icon: speed
+      description: Designed for automation, FlexNamer is perfect for repeatable renaming operations.
+
+    - title: Powerful CLI
+      icon: terminal
+      description: FlexNamer is distributed as a simple command-line binary, making it easy to integrate into your workflow.
+
+    - title: Configurable
+      icon: settings
+      description: Designed with a plugin architecture to make managing your renames easy.
+
+
+# Image Compare
+imageCompare:
+  enable: false
+  weight: 30
+  template: image compare
+
+  title: Customise The Lotus Docs Appearance
+  subtitle: Much of Lotus Docs' appearance can be customised. Dark mode is optional (enabled by default) and you can choose a Google font that suites you via the config parameters.
+
+  items:
+    - title: Dark Mode
+      config: {
+        startingPoint: 50,
+        addCircle: true,
+        addCircleBlur: false,
+        showLabels: true,
+        labelOptions: {
+          before: 'Dark',
+          after: 'Light',
+          onHover: false
+        }
+      }
+      imagePath: "images/screenshots"
+      imageBefore: "lotusdocs_dark_v0.8.webp"
+      imageAfter: "lotusdocs_light_v0.8.webp"
+
+    - title: Custom Fonts
+      config: {
+        controlColor: "#3C4257",
+        startingPoint: 25,
+        addCircle: true,
+        addCircleBlur: false,
+        showLabels: true,
+        labelOptions: {
+          before: 'Inter',
+          after: 'Life Saver',
+          onHover: false
+        }
+      }
+      imagePath: "images/screenshots"
+      imageBefore: "lotusdocs_google_font_demo_inter_screenshot.webp"
+      imageAfter: "lotusdocs_google_font_demo_lifesavers_screenshot.webp"
+
+    - title: Accent Color
+      config: {
+        startingPoint: 25,
+        addCircle: true,
+        addCircleBlur: true,
+        showLabels: true,
+        labelOptions: {
+          before: 'Blue',
+          after: 'Cardinal',
+          onHover: false
+        }
+      }
+      imagePath: "images/screenshots"
+      imageBefore: "lotusdocs_blue_theme_colour.webp"
+      imageAfter: "lotusdocs_cardinal_theme_colour.webp"

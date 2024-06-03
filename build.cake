@@ -154,7 +154,7 @@ Task("Publish-Runtime")
 					ArgumentCustomization = args => args
 						.Append($"/p:Version={packageVersion}")
 						.Append("/p:AssemblyVersion=1.0.0.0")
-						// .Append("/p:AssemblyName=sputter")
+						// .Append("/p:AssemblyName=fn")
 				};
 				DotNetPublish(projPath, settings);
 				CreateDirectory($"{artifacts}archive");

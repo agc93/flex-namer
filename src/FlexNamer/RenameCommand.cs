@@ -1,5 +1,6 @@
 ﻿using Spectre.Console;
 using Spectre.Console.Cli;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 
 namespace FlexNamer;
@@ -77,23 +78,41 @@ public class RenameCommand : Command<RenameCommand.Settings> {
 	[SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
 	[SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
 	public sealed class Settings : CommandSettings {
-		[CommandArgument(0, "[DIR]")] public string Directory { get; set; } = Environment.CurrentDirectory;
+		[CommandArgument(0, "[DIR]")]
+		[Description("The folder to search for file(s) to rename.")]
+		public string Directory { get; set; } = Environment.CurrentDirectory;
 
-		[CommandOption("-f|--filter")] public string? Pattern { get; set; } = "*.mp4";
+		[CommandOption("-f|--filter")]
+		[Description("Wildcard pattern to match file(s) to, such as \"*.txt\" or \"Export*.*\".")]
+		public string? Pattern { get; set; }
 
-		[CommandOption("-a|--all")] public bool IncludeAll { get; set; } = false;
+		// [CommandOption("-a|--all")]
+		[Description("Includes files, even when they contain excluded words.")]
+		internal bool IncludeAll { get; set; } = false;
 
-		[CommandOption("-d|--directory")] public bool UseDirectoryName { get; set; } = false;
+		[CommandOption("-d|--directory")]
+		[Description("Uses the current directory name instead of the input file name as the basis for renaming.")]
+		public bool UseDirectoryName { get; set; } = false;
 
-		[CommandOption("-b|--batch")] public bool BatchMode { get; set; } = false;
+		[CommandOption("-b|--batch")]
+		[Description("Enables renaming of multiple files at once. Otherwise, renaming will only proceed if exactly one file is matched.")]
+		public bool BatchMode { get; set; } = false;
 
-		[CommandOption("-z|--iso")] public bool UseISODateFormat { get; set; } = false;
+		[CommandOption("-z|--iso")]
+		[Description("Instructs naming formats to prefer ISO date format to \"friendlier\" date formats.")]
+		public bool UseISODateFormat { get; set; } = false;
 
-		[CommandOption("--dry-run")] public bool DryRun { get; set; } = false;
+		[CommandOption("--dry-run")]
+		[Description("Does not perform any actual renaming, instead only simulating the rename operation.")]
+		public bool DryRun { get; set; } = false;
 		
-		[CommandOption("--non-interactive")] public bool NonInteractive { get; set; } = false;
+		[CommandOption("--non-interactive")]
+		[Description("Forces the command to proceed without any user input. This will bypass any prompts and skip formats that require user interaction")]
+		public bool NonInteractive { get; set; } = false;
 
-		[CommandOption("-s|--separator")] public string Separator { get; set; } = " - ";
+		[CommandOption("-s|--separator")]
+		[Description("The separator to use between the components of a target name (where applicable).")]
+		public string Separator { get; set; } = " - ";
 
 		public override ValidationResult Validate() {
 			if (File.Exists(Directory) && !System.IO.Directory.Exists(Directory)) {
