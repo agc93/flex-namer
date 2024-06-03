@@ -16,5 +16,5 @@ public static class CoreExtensions
 		return GetTextInfo().ToTitleCase(s);
 	}
 
-	public static System.Globalization.TextInfo GetTextInfo() => System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo;
+	public static System.Globalization.TextInfo GetTextInfo() => Thread.CurrentThread.CurrentCulture.TextInfo;
 }

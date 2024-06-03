@@ -20,8 +20,11 @@ public class RenameCommand : Command<RenameCommand.Settings> {
 			return 404;
 		}
 
-		var list = di.GetFiles();
-		var searchList = di.GetFiles(settings.Pattern);
+		if (settings.NonInteractive && _formats.Any(f => !f.SupportsNonInteractive)) {
+			AnsiConsole.WriteLine(
+				"[WARNING]: Some naming formats require interaction, but you are running in non-interactive mode! These formats will be skipped!");
+		}
+		
 		var files = di
 			.GetFiles(settings.Pattern ?? "*")
 			.Where(f => settings.IncludeAll || !ExcludedWords.Any(e => f.Name.Contains(e)))
@@ -45,10 +48,11 @@ public class RenameCommand : Command<RenameCommand.Settings> {
 				? file.Directory!
 				: file;
 			FileNameTarget? target = null;
-			for (int i = 0; i < _formats.Count && target == null; i++) {
-				var matchingFormat = _formats.FirstOrDefault(f => f.Matches(matchName));
-				if (matchingFormat != null) {
-					target = matchingFormat.Rename(matchCandidate, new RenameOptions(!settings.UseISODateFormat));
+			for (var i = 0; i < _formats.Count && target == null; i++) {
+				var fmt = _formats[i];
+				var matches = (settings.NonInteractive == false || fmt.SupportsNonInteractive) && fmt.Matches(matchName);
+				if (matches) {
+					target = fmt.Rename(matchCandidate, new RenameOptions(!settings.UseISODateFormat));
 				}
 			}
 			if (target == null) {
@@ -58,7 +62,7 @@ public class RenameCommand : Command<RenameCommand.Settings> {
 				if (settings.UseDirectoryName && !finalPath.EndsWith(file.Extension)) {
 					finalPath = $"{finalPath}{file.Extension}";
 				}
-				AnsiConsole.MarkupLine("Renaming '{0}' to '{1}'", matchName, finalPath);
+				AnsiConsole.WriteLine("Renaming '{0}' to '{1}'", matchName, finalPath);
 				if (settings.DryRun) {
 					AnsiConsole.WriteLine("Dry run enabled! Skipping rename of '{0}' to '{1}'", matchName, finalPath);
 				} else {
@@ -70,10 +74,12 @@ public class RenameCommand : Command<RenameCommand.Settings> {
 		return 200;
 	}
 
+	[SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
+	[SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
 	public sealed class Settings : CommandSettings {
 		[CommandArgument(0, "[DIR]")] public string Directory { get; set; } = Environment.CurrentDirectory;
 
-		[CommandOption("-f|--filter")] public string Pattern { get; set; } = "*.mp4";
+		[CommandOption("-f|--filter")] public string? Pattern { get; set; } = "*.mp4";
 
 		[CommandOption("-a|--all")] public bool IncludeAll { get; set; } = false;
 
@@ -84,6 +90,8 @@ public class RenameCommand : Command<RenameCommand.Settings> {
 		[CommandOption("-z|--iso")] public bool UseISODateFormat { get; set; } = false;
 
 		[CommandOption("--dry-run")] public bool DryRun { get; set; } = false;
+		
+		[CommandOption("--non-interactive")] public bool NonInteractive { get; set; } = false;
 
 		[CommandOption("-s|--separator")] public string Separator { get; set; } = " - ";
 

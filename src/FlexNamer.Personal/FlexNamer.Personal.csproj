@@ -11,7 +11,7 @@
       <ProjectReference Include="..\FlexNamer.Core\FlexNamer.Core.csproj" />
     </ItemGroup>
 
-    <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <PropertyGroup>
         <OutDir>..\FlexNamer\bin\Debug\net8.0\Plugins\FlexNamer.Personal\</OutDir>
         <DebugType>Embedded</DebugType>
     </PropertyGroup>
