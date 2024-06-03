@@ -35,7 +35,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         name: Upload Packages
         with:
-          name: sputter-server
+          name: flex-namer-packages
           path: dist/packages/*
       - uses: actions/upload-artifact@v4
         name: Upload CLI
