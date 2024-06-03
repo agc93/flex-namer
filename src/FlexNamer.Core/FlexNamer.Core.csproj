@@ -14,4 +14,11 @@
       <PackageReference Include="Shale.Abstractions" Version="0.0.0-preview.0.5" />
     </ItemGroup>
 
+    <PropertyGroup>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+
 </Project>

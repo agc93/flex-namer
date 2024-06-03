@@ -9,7 +9,11 @@
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>fn</ToolCommandName>
     <IsPublishable>true</IsPublishable>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
   <PropertyGroup Condition="'$(StandalonePublish)'=='true'">
     <SelfContained>true</SelfContained>
     <PublishTrimmed>true</PublishTrimmed>

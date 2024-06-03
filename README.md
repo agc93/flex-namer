@@ -6,6 +6,8 @@ A lightweight extensible utility for renaming batches of files according to pre-
 
 There are already great tools out there for batch renaming files (my personal tool of choice is the PowerRename in PowerToys), but my workflow often involves renaming batches of files from external sources with the same format into a new naming format.
 
+> This project is rough, highly unpolished, and is really just a personal project being unceremoniously thrown into the world in case anyone else finds it useful.
+
 #### Couldn't this just be a PowerShell script?
 
 **Yes**. Yes, it could, but I felt that was hacky and didn't like having a separate script for each data source that I would need to switch between so I built this instead.
